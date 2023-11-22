@@ -75,14 +75,50 @@ def insert_X_or_O(player, index):
     horizontal, diagnal, vertical - one player wins
     all spots filled, tie
 '''
-def check_if_end_game():
-    pass
+def check_if_end_game(player, board):
+    if ((board[0][0] == player and board[0][1] == player and board[0][2] == player) or {board[1][0] == player and board[1][1] == player and board[1][2] == player} or (board[2][0] == player and board[2][1] == player and board[2][2] == player)):
+        # horizontal check
+        if player == player1Marker:
+            print(f"Player 1 wins")
+        elif player == player2Marker:
+            print("Player 2 wins")
+    elif (() or () or ()):
+         # vertical check
+        if player == player1Marker:
+            print(f"Player 1 wins")
+        elif player == player2Marker:
+            print("Player 2 wins")
+    elif (() or ()):
+        # diagonal check
+        if player == player1Marker:
+            print(f"Player 1 wins")
+        elif player == player2Marker:
+            print("Player 2 wins")
+    else:
+        # none of the combination wins
+        # check if all filled => game end: tie
+        # check if not all filled => game not end
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                # check if empty
+                if board[i][j] == " ":
+                    return False
+                    # game not end
+        # true = game ends
+        print("Game Tie!")
+        return True
+
+    # true = game ends
+    return True
+    
 
 '''
     all functions will run here
 '''
 # play game
 def play_game():
+    while(check_if_end_game() != True):
+        pass
     # chose_symbol()
     # print_board(board)
     pass
