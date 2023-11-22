@@ -7,6 +7,11 @@ bottom_row = [' ', ' ', ' ']
 board = [top_row, middle_row, bottom_row]
 
 # predefined methods
+'''
+    This is the starting function that allows player one to choose X or O
+    Will assign the unchosen sign to player 2
+    repeats if other symbol selection
+'''
 def chose_symbol():
     global player1Marker
     player1Marker = ""
@@ -24,6 +29,9 @@ def chose_symbol():
                 player2Marker = "X"
             print(f"Player 1 is: {player1Marker}\nPlayer 2 is: {player2Marker}")
 
+'''
+    prints the board for the game
+'''
 def print_board(board):
     for i in range(len(board)):
         str_row = "|"
@@ -35,9 +43,23 @@ def print_board(board):
         if i < len(board)-1:
             print("=======")  
 
+'''
+    take a user imput and put it into the array
+'''
 def insert_X_or_O():
     pass
 
+'''
+    checks all possible combinations for end game 
+    horizontal, diagnal, vertical - one player wins
+    all spots filled, tie
+'''
+def check_if_end_game():
+    pass
+
+'''
+    all functions will run here
+'''
 # play game
 def play_game():
     chose_symbol()
