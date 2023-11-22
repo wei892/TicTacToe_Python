@@ -1,4 +1,5 @@
 
+# global variables
 # tictactoe Board
 top_row = [' ', ' ', ' ']
 middle_row = [' ', ' ', ' ']
@@ -7,17 +8,21 @@ board = [top_row, middle_row, bottom_row]
 
 # predefined methods
 def chose_symbol():
+    global player1Marker
     player1Marker = ""
+    global player2Marker
     player2Marker = ""
-
     while player1Marker != "X" and player1Marker != "O":
         player1Marker = input("Player 1, choose X or O: ")
-        print(player1Marker)
-        print(player1Marker == "X")
         if player1Marker != "X" and player1Marker != "O":
             print("Symbol does not exist, try again!")
         else:
             print("Symbol Chosen")
+            if player1Marker == "X":
+                player2Marker = "O"
+            else:
+                player2Marker = "X"
+            print(f"Player 1 is: {player1Marker}\nPlayer 2 is: {player2Marker}")
 
 def print_board(board):
     for i in range(len(board)):
@@ -35,8 +40,8 @@ def insert_X_or_O():
 
 # play game
 def play_game():
-    # choseSymbol()
-    print_board(board)
+    chose_symbol()
+    # print_board(board)
     pass
 
 play_game()
