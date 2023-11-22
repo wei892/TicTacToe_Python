@@ -46,8 +46,29 @@ def print_board(board):
 '''
     take a user imput and put it into the array
 '''
-def insert_X_or_O():
-    pass
+def insert_X_or_O(player, index):
+    if index == 1 and bottom_row[0] == " ":
+        bottom_row[0] = player
+    elif index == 2 and bottom_row[1] == " ":
+        bottom_row[1] = player
+    elif index == 3 and bottom_row[2] == " ":
+        bottom_row[2] = player
+    elif index == 4 and middle_row[0] == " ":
+        middle_row[0] = player
+    elif index == 5 and middle_row[1] == " ":
+        middle_row[1] = player
+    elif index == 6 and middle_row[2] == " ":
+        middle_row[2] = player
+    elif index == 7 and top_row[0] == " ":
+        top_row[0] = player
+    elif index == 8 and top_row[1] == " ":
+        top_row[1] = player
+    elif index == 9 and player[2] == " ":
+        top_row[2] = player
+    else:
+        # position not available
+        return False
+    return True
 
 '''
     checks all possible combinations for end game 
@@ -62,7 +83,7 @@ def check_if_end_game():
 '''
 # play game
 def play_game():
-    chose_symbol()
+    # chose_symbol()
     # print_board(board)
     pass
 
