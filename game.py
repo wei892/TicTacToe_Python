@@ -134,6 +134,7 @@ def check_if_end_game(player):
 '''
 # play game
 def play_game():
+    print("Wecome to Tic Tac Toe!")
     # let player pick a symbol
     chose_symbol()
 
@@ -184,5 +185,16 @@ def play_game():
         # set player to other
         player1Turn = not player1Turn
 
-play_game()
+
+play_game = True
+while play_game:
+    play_game()
+
+    play_again = input("Play again? Y or N: ")
+    if play_again == "Y":
+        play_game = True
+    else: 
+        play_game = False
+        break
+
 
