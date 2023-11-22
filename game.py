@@ -1,9 +1,12 @@
-def playGame():
-    choseSymbol()
 
-playGame()
+# tictactoe Board
+top_row = [' ', ' ', ' ']
+middle_row = [' ', ' ', ' ']
+bottom_row = [' ', ' ', ' ']
+board = [top_row, middle_row, bottom_row]
 
-def choseSymbol():
+# predefined methods
+def chose_symbol():
     player1Marker = ""
     player2Marker = ""
 
@@ -16,8 +19,26 @@ def choseSymbol():
         else:
             print("Symbol Chosen")
 
-def printBoard():
+def print_board(board):
+    for i in range(len(board)):
+        str_row = "|"
+        for j in range(len(board[i])):
+            str_row += board[i][j]
+            # str_row += 'x'
+            str_row += "|"
+        print(str_row)
+        if i < len(board)-1:
+            print("=======")  
+
+def insert_X_or_O():
     pass
 
+# play game
+def play_game():
+    # choseSymbol()
+    print_board(board)
+    pass
+
+play_game()
 
 
