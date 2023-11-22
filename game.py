@@ -47,6 +47,9 @@ def print_board(board):
     take a user imput and put it into the array
 '''
 def insert_X_or_O(player, index):
+    if index not in range(1, 10):
+        return False
+    
     if index == 1 and bottom_row[0] == " ":
         bottom_row[0] = player
     elif index == 2 and bottom_row[1] == " ":
@@ -75,20 +78,33 @@ def insert_X_or_O(player, index):
     horizontal, diagnal, vertical - one player wins
     all spots filled, tie
 '''
-def check_if_end_game(player, board):
-    if ((board[0][0] == player and board[0][1] == player and board[0][2] == player) or {board[1][0] == player and board[1][1] == player and board[1][2] == player} or (board[2][0] == player and board[2][1] == player and board[2][2] == player)):
-        # horizontal check
+def check_if_end_game(player):
+    if (
+        (board[0][0] == player and board[0][1] == player and board[0][2] == player) 
+        or 
+        (board[1][0] == player and board[1][1] == player and board[1][2] == player)
+        or 
+        (board[2][0] == player and board[2][1] == player and board[2][2] == player)):
+        print("Won horizontal")
         if player == player1Marker:
             print(f"Player 1 wins")
         elif player == player2Marker:
             print("Player 2 wins")
-    elif (() or () or ()):
+    elif (
+        (board[0][0] == player and board[1][0] == player and board[2][0] == player) 
+        or 
+        (board[0][1] == player and board[1][1] == player and board[2][1] == player) 
+        or 
+        (board[0][2] == player and board[1][2] == player and board[2][2] == player)):
          # vertical check
         if player == player1Marker:
             print(f"Player 1 wins")
         elif player == player2Marker:
             print("Player 2 wins")
-    elif (() or ()):
+    elif (
+        (board[0][0] == player and board[1][1] == player and board[2][2] == player) 
+        or 
+        (board[0][2] == player and board[1][1] == player and board[2][0] == player)):
         # diagonal check
         if player == player1Marker:
             print(f"Player 1 wins")
@@ -102,6 +118,7 @@ def check_if_end_game(player, board):
             for j in range(len(board[i])):
                 # check if empty
                 if board[i][j] == " ":
+                    print(board[i][j])
                     return False
                     # game not end
         # true = game ends
@@ -117,12 +134,55 @@ def check_if_end_game(player, board):
 '''
 # play game
 def play_game():
-    while(check_if_end_game() != True):
-        pass
-    # chose_symbol()
-    # print_board(board)
-    pass
+    # let player pick a symbol
+    chose_symbol()
+
+    # displays an empty board
+    print("\n")
+    print_board(board)
+    print("\n"*3)
+
+    # starts game with player one
+    player1Turn = True
+    player = player1Marker
+
+    # while game is not ended, play
+    while(check_if_end_game(player) != True):
+
+        # toggling between players
+        if player1Turn:
+            player = player1Marker
+            while True:
+                try:
+                    position = int(input("Player 1 turn! Make a move: "))
+                except:
+                    position = int("Move must be an int: ")
+                else:
+                    break
+        else:
+            player = player2Marker
+            while True:
+                try:
+                    position = int(input("Player 2 turn! Make a move: "))
+                except:
+                    position = int("Move must be an int: ")
+                else:
+                    break
+
+        # try making the move
+        move_possible = insert_X_or_O(player, position)
+        # if move doesnt work: input error and ask player to try again
+        while move_possible == False:
+            position = int(input("Move not possible! Try again: "))
+            move_possible = insert_X_or_O(player, position)
+        # # if it works, print board:
+        print_board(board)
+        if check_if_end_game(player) == True:
+            print("Game Ended!")
+            break
+
+        # set player to other
+        player1Turn = not player1Turn
 
 play_game()
-
 
