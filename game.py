@@ -66,7 +66,7 @@ def insert_X_or_O(player, index):
         top_row[0] = player
     elif index == 8 and top_row[1] == " ":
         top_row[1] = player
-    elif index == 9 and player[2] == " ":
+    elif index == 9 and top_row[2] == " ":
         top_row[2] = player
     else:
         # position not available
@@ -186,15 +186,21 @@ def play_game():
         player1Turn = not player1Turn
 
 
-play_game = True
-while play_game:
+game_on = True
+while game_on:
     play_game()
 
     play_again = input("Play again? Y or N: ")
     if play_again == "Y":
-        play_game = True
+        game_on = True
+
+        # resets the board
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                board[i][j] = " "
+
     else: 
-        play_game = False
+        game_on = False
         break
 
 
